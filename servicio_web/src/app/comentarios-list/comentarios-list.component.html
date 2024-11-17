@@ -1,0 +1,15 @@
+<div *ngIf="resenas.length > 0; else noResenas">
+    <h2>Reseñas Pendientes</h2>
+    <ul>
+      <li *ngFor="let resena of resenas; let i = index">
+        <p><strong>Cliente:</strong> {{ resena.nombreCliente }}</p>
+        <p><strong>Descripción:</strong> {{ resena.descripcion }}</p>
+        <button (click)="aprobarResena(i, resena)">Aprobar</button>
+        <button (click)="rechazarResena(i)">Rechazar</button>
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noResenas>
+    <p>No hay reseñas pendientes.</p>
+  </ng-template>

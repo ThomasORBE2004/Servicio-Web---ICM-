@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ComentariosListComponent } from './comentarios-list/comentarios-lista.component';
+import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 
 const routes: Routes = [
-
-  { path: 'comentarios', component: ComentariosListComponent },
-  { path: '', redirectTo: '/comentarios', pathMatch: 'full' }
+  { path: '', component: ComentariosListComponent }
 ];
 
 @NgModule({

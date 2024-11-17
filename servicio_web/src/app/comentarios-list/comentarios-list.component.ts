@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComentariosService } from '../services/comentarios.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComentariosService } from '../services/comentarios.service';
   templateUrl: './comentarios-list.component.html',
   styleUrls: ['./comentarios-list.component.css']
 })
-export class ComentariosListComponent implements OnInit {
+export class ComentariosListComponent{
   resenas: any[] = [];
   viajeId = '0'; // Id del viaje seleccionado (puedes cambiarlo dinámicamente según tu lógica)
 
@@ -22,15 +22,14 @@ export class ComentariosListComponent implements OnInit {
     });
   }
 
-  aprobarResena(resenaId: string, resena: any) {
-    this.comentariosService.aprobarResena(this.viajeId, resenaId, resena)
-      .then(() => console.log('Reseña aprobada'))
-      .catch(err => console.error(err));
+  aprobarResena(index: number, resena: any): void {
+    console.log(`Reseña aprobada: ${JSON.stringify(resena)}`);
+    this.resenas.splice(index, 1); // Eliminar la reseña aprobada
   }
 
-  rechazarResena(resenaId: string) {
-    this.comentariosService.rechazarResena(this.viajeId, resenaId)
-      .then(() => console.log('Reseña rechazada'))
-      .catch(err => console.error(err));
+  rechazarResena(index: number): void {
+    console.log(`Reseña rechazada en el índice: ${index}`);
+    this.resenas.splice(index, 1); // Eliminar la reseña rechazada
   }
+
 }
