@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,33 @@ export class ComentariosService {
 
   constructor(private db: AngularFireDatabase) {}
 
-  // Obtener todas las reseñas de un viaje
   getResenas(viajeId: string): Observable<any[]> {
-    return this.db.list(`${this.dbPath}/${viajeId}/resenas`).valueChanges();
+    return this.db.list(`${this.dbPath}/${viajeId}/resenas`).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => {
+          const val = c.payload.val();
+          return typeof val === 'object' && val !== null
+            ? { id: c.payload.key, ...val }
+            : { id: c.payload.key }; // En caso de que no sea un objeto
+        })
+      )
+    );
   }
+  
+  getViajes(): Observable<any[]> {
+    return this.db.list(`${this.dbPath}`).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => {
+          const val = c.payload.val();
+          return typeof val === 'object' && val !== null
+            ? { id: c.payload.key, ...val }
+            : { id: c.payload.key }; // En caso de que no sea un objeto
+        })
+      )
+    );
+  }
+  
+  
 
   // Aprobar una reseña (agregar a las reseñas aprobadas)
   aprobarResena(viajeId: string, resenaId: string, resena: any): Promise<void> {
