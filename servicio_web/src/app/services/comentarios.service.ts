@@ -42,7 +42,7 @@ export class ComentariosService {
   // Aprobar una reseña (agregar a las reseñas aprobadas)
   aprobarResena(viajeId: string, resenaId: string, resena: any): Promise<void> {
     // Escribe la reseña directamente en la lista de reseñas aprobadas
-    return this.db.list(`${this.dbPath}/${viajeId}/resenas-aprobadas`).push(resena).then(() => {
+    return this.db.list(`${this.dbPath}/${viajeId}/resenas_aprobadas`).push(resena).then(() => {
       // Una vez aprobada, elimina la reseña pendiente
       this.rechazarResena(viajeId, resenaId);
     });
