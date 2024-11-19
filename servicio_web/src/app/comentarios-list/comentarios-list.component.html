@@ -5,8 +5,8 @@
 
   <div *ngIf="viajes.length > 0; else noViajes">
     <h2>Lista de Viajes</h2>
-    <ul>
-      <li *ngFor="let viaje of viajes; let i = index">
+    <div class="viajes-container">
+      <div *ngFor="let viaje of viajes; let i = index" class="viaje-item">
         <p><strong>Viaje:</strong> {{ viaje.nombre }}</p>
         <button (click)="toggleResenas(i)">Ver Reseñas</button>
 
@@ -17,8 +17,7 @@
               <p><strong>Cliente:</strong> {{ resena.nombreCliente }}</p>
               <p><strong>Clasificacion:</strong> {{ resena.clasificacion }}</p>
               <p><strong>Descripción:</strong> {{ resena.descripcion }}</p>
-
-              <!-- Agregar la imagen -->
+              
               <div class="resena-foto-container" *ngIf="resena.urlFoto">
                 <img [src]="resena.urlFoto" alt="Foto de la reseña" class="resena-foto">
               </div>
@@ -31,8 +30,8 @@
             <p>No hay reseñas pendientes para este viaje.</p>
           </ng-template>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 
   <ng-template #noViajes>

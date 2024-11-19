@@ -1,3 +1,27 @@
+.viajes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .viaje-item {
+    width: calc(50% - 20px); /* Esto asegura que cada viaje ocupe la mitad del ancho */
+    box-sizing: border-box; /* Esto asegura que el padding no afecte el tamaño del ancho */
+    
+    border: 2px solid #ccc; /* Añade un borde gris claro alrededor del viaje */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espacio alrededor del contenido dentro del recuadro */
+    background-color: #f9f9f9; /* Color de fondo del recuadro (opcional) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar un efecto de elevación */
+  }
+  
+  @media (max-width: 768px) {
+    .viaje-item {
+      width: 100%; /* En pantallas pequeñas, el recuadro ocupa todo el ancho */
+    }
+  }
+  
+
 .comentarios-container {
     padding: 80px 20px 20px;
     font-family: "Manrope", sans-serif;
