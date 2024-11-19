@@ -9,12 +9,14 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 import { HomeComponent } from './home/home.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComentariosListComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

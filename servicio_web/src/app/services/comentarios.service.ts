@@ -11,45 +11,51 @@ export class ComentariosService {
 
   constructor(private db: AngularFireDatabase) {}
 
+  // Obtener reseñas pendientes de un viaje
   getResenas(viajeId: string): Observable<any[]> {
     return this.db.list(`${this.dbPath}/${viajeId}/resenas`).snapshotChanges().pipe(
       map(changes =>
-        changes.map(c => {
-          const val = c.payload.val();
-          return typeof val === 'object' && val !== null
-            ? { id: c.payload.key, ...val }
-            : { id: c.payload.key }; // En caso de que no sea un objeto
-        })
+        changes.map(c => ({
+          id: c.payload.key,
+          ...c.payload.val() as object,
+        }))
       )
     );
   }
-  
-  getViajes(): Observable<any[]> {
-    return this.db.list(`${this.dbPath}`).snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => {
-          const val = c.payload.val();
-          return typeof val === 'object' && val !== null
-            ? { id: c.payload.key, ...val }
-            : { id: c.payload.key }; // En caso de que no sea un objeto
-        })
-      )
-    );
-  }
-  
-  
 
-  // Aprobar una reseña (agregar a las reseñas aprobadas)
+  // Obtener la lista de viajes
+  getViajes(): Observable<any[]> {
+    return this.db.list(this.dbPath).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({
+          id: c.payload.key,
+          ...c.payload.val() as object,
+        }))
+      )
+    );
+  }
+
+  // Aprobar una reseña: agregar a aprobadas y eliminar de pendientes
   aprobarResena(viajeId: string, resenaId: string, resena: any): Promise<void> {
-    // Escribe la reseña directamente en la lista de reseñas aprobadas
     return this.db.list(`${this.dbPath}/${viajeId}/resenas_aprobadas`).push(resena).then(() => {
-      // Una vez aprobada, elimina la reseña pendiente
-      this.rechazarResena(viajeId, resenaId);
+      return this.rechazarResena(viajeId, resenaId); // Elimina de pendientes
     });
   }
 
-  // Rechazar una reseña (eliminarla)
+  // Rechazar una reseña: eliminar de la lista de pendientes
   rechazarResena(viajeId: string, resenaId: string): Promise<void> {
     return this.db.object(`${this.dbPath}/${viajeId}/resenas/${resenaId}`).remove();
+  }
+
+  // Obtener reseñas aprobadas de un viaje (por si lo necesitas)
+  getResenasAprobadas(viajeId: string): Observable<any[]> {
+    return this.db.list(`${this.dbPath}/${viajeId}/resenas_aprobadas`).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({
+          id: c.payload.key,
+          ...c.payload.val() as object,
+        }))
+      )
+    );
   }
 }

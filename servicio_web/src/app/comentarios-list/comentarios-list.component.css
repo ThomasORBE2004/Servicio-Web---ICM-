@@ -1,0 +1,67 @@
+.comentarios-container {
+    padding: 80px 20px 20px;
+    font-family: "Manrope", sans-serif;
+  }
+
+  
+  
+  .resena-foto-container {
+    margin: 10px 0;
+  }
+  
+  .resena-foto {
+    width: 100%;
+    max-width: 300px; /* Tamaño máximo de la imagen */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la imagen */
+  }
+  
+  
+  .comentarios-container h1 {
+    color: #379ae6;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .comentarios-container h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .comentarios-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comentarios-container li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+  
+  .comentarios-container button {
+    background-color: #379ae6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comentarios-container button:hover {
+    background-color: #2c81cc;
+  }
+  
+  .comentarios-container p {
+    color: #666;
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  

@@ -20,6 +20,7 @@ export class ComentariosListComponent implements OnInit {
     this.comentariosService.getViajes().subscribe(data => {
       this.viajes = data.map((viaje: any, index: number) => ({
         id: index.toString(), // Ajusta según cómo almacenas el ID en Firebase
+        nombre: viaje.nombre,
         mostrarResenas: false,
         resenas: [] // Inicializar las reseñas del viaje
       }));
@@ -43,7 +44,7 @@ export class ComentariosListComponent implements OnInit {
   aprobarResena(viajeIndex: number, resenaIndex: number, resena: any): void {
     const viaje = this.viajes[viajeIndex];
     this.comentariosService.aprobarResena(viaje.id, resena.id, resena).then(() => {
-      viaje.resenas.splice(resenaIndex, 1); // Eliminar la reseña aprobada de la lista
+      viaje.resenas.splice(resenaIndex, 1); 
     });
   }
 
@@ -52,7 +53,7 @@ export class ComentariosListComponent implements OnInit {
     const viaje = this.viajes[viajeIndex];
     const resenaId = viaje.resenas[resenaIndex].id;
     this.comentariosService.rechazarResena(viaje.id, resenaId).then(() => {
-      viaje.resenas.splice(resenaIndex, 1); // Eliminar la reseña rechazada de la lista
+      viaje.resenas.splice(resenaIndex, 1); 
     });
   }
 }
