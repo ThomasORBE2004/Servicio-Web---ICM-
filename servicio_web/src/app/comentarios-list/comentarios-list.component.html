@@ -1,15 +1,30 @@
-<div *ngIf="resenas.length > 0; else noResenas">
-    <h2>Reseñas Pendientes</h2>
-    <ul>
-      <li *ngFor="let resena of resenas; let i = index">
-        <p><strong>Cliente:</strong> {{ resena.nombreCliente }}</p>
-        <p><strong>Descripción:</strong> {{ resena.descripcion }}</p>
-        <button (click)="aprobarResena(i, resena)">Aprobar</button>
-        <button (click)="rechazarResena(i)">Rechazar</button>
-      </li>
-    </ul>
-  </div>
-  
-  <ng-template #noResenas>
-    <p>No hay reseñas pendientes.</p>
-  </ng-template>
+<h1>Reseñas</h1>
+
+<div *ngIf="viajes.length > 0; else noViajes">
+  <h2>Lista de Viajes</h2>
+  <ul>
+    <li *ngFor="let viaje of viajes; let i = index">
+      <p><strong>Viaje:</strong> {{ viaje.id }}</p>
+      <button (click)="toggleResenas(i)">Ver Reseñas</button>
+      
+      <div *ngIf="viaje.mostrarResenas">
+        <h3>Reseñas Pendientes</h3>
+        <ul *ngIf="viaje.resenas.length > 0; else noResenas">
+          <li *ngFor="let resena of viaje.resenas; let j = index">
+            <p><strong>Cliente:</strong> {{ resena.nombreCliente }}</p>
+            <p><strong>Descripción:</strong> {{ resena.descripcion }}</p>
+            <button (click)="aprobarResena(i, j, resena)">Aprobar</button>
+            <button (click)="rechazarResena(i, j)">Rechazar</button>
+          </li>
+        </ul>
+        <ng-template #noResenas>
+          <p>No hay reseñas pendientes para este viaje.</p>
+        </ng-template>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noViajes>
+  <p>No hay viajes disponibles.</p>
+</ng-template>
