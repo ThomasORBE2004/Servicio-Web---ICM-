@@ -10,13 +10,15 @@ import { ComentariosListComponent } from './comentarios-list/comentarios-list.co
 import { HomeComponent } from './home/home.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { HeaderComponent } from './header/header.component';
+import { ArchivosComponent } from './archivos/archivos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComentariosListComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ArchivosComponent
   ],
   imports: [
     BrowserModule,
