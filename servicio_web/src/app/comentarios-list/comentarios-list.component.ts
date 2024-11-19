@@ -8,7 +8,7 @@ import { ComentariosService } from '../services/comentarios.service';
 })
 export class ComentariosListComponent{
   resenas: any[] = [];
-  viajeId = '0'; // Id del viaje seleccionado (puedes cambiarlo dinámicamente según tu lógica)
+  viajeId = '0';
 
   constructor(private comentariosService: ComentariosService) {}
 

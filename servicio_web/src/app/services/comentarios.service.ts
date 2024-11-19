@@ -10,6 +10,9 @@ export class ComentariosService {
 
   constructor(private db: AngularFireDatabase) {}
 
+
+
+  
   // Obtener todas las reseñas de un viaje
   getResenas(viajeId: string): Observable<any[]> {
     return this.db.list(`${this.dbPath}/${viajeId}/resenas`).valueChanges();
