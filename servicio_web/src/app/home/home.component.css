@@ -1,28 +1,51 @@
+/* Estilo común para ambos contenedores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: "Manrope", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Asegura que no esté centrado verticalmente */
+    height: 100%;  /* Ocupa toda la altura de la pantalla */
+    background-color: #f4f4f4;  /* Fondo gris claro */
+}
+
+/* Contenedor principal de la página (Home) */
 .home-container {
-    padding: 80px 20px 20px; /* Espacio superior para separar del header */
+    padding: 20px 20px 20px;  /* Ajustamos para un buen espaciado */
     text-align: center;
     font-family: "Manrope", sans-serif;
-  }
+    max-width: 900px;  /* Ajusta el tamaño máximo */
+    margin: 80px auto 40px; /* Separación del header, y centrado */
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
   
-  .home-container h1 {
+.home-container h1 {
     color: #379ae6;
     font-size: 32px;
     margin-bottom: 10px;
-  }
+}
   
-  .home-container h2 {
+.home-container h2 {
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
-  }
+}
   
-  .home-container p {
+.home-container p {
     color: #666;
     font-size: 18px;
     margin-bottom: 20px;
-  }
+}
   
-  .home-container a {
+.home-container a {
     text-decoration: none;
     color: #ffffff;
     background-color: #379ae6;
@@ -31,9 +54,46 @@
     font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .home-container a:hover {
+.home-container a:hover {
     background-color: #2c81cc;
-  }
+}
+
+/* Contenedor para las secciones (Reseñas y Cargar Archivos) */
+.section-container {
+    max-width: 900px;  /* Ajusta el tamaño máximo */
+    margin: 80px auto 40px; /* Separación similar al contenedor Home, centrado */
+    padding: 80px 20px 20px;  /* Mismo padding que el contenedor Home */
+    background-color: #fff;  /* Fondo blanco */
+    border-radius: 8px;
+    border: 1px solid #ddd;  /* Bordes suaves */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
   
+.section-container h3 {
+    color: #379ae6;
+    font-size: 32px; /* Coincide con el tamaño de h1 en Home */
+    margin-bottom: 10px;
+}
+  
+.section-container p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+  
+.section-container a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #379ae6;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+  
+.section-container a:hover {
+    background-color: #2c81cc;
+}
